@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "/MereheadTestTask/static/js/main.b60cd6e9.chunk.js",
-    "main.js.map": "/MereheadTestTask/static/js/main.b60cd6e9.chunk.js.map",
-    "runtime-main.js": "/MereheadTestTask/static/js/runtime-main.4cfc7d1f.js",
-    "runtime-main.js.map": "/MereheadTestTask/static/js/runtime-main.4cfc7d1f.js.map",
-    "static/js/2.5ed114d8.chunk.js": "/MereheadTestTask/static/js/2.5ed114d8.chunk.js",
-    "static/js/2.5ed114d8.chunk.js.map": "/MereheadTestTask/static/js/2.5ed114d8.chunk.js.map",
-    "index.html": "/MereheadTestTask/index.html",
-    "precache-manifest.0944db081ced8d296eb9c848f21d0cab.js": "/MereheadTestTask/precache-manifest.0944db081ced8d296eb9c848f21d0cab.js",
-    "service-worker.js": "/MereheadTestTask/service-worker.js",
-    "static/js/2.5ed114d8.chunk.js.LICENSE.txt": "/MereheadTestTask/static/js/2.5ed114d8.chunk.js.LICENSE.txt"
+    "main.js": "/MereHeadTestFull/static/js/main.b60cd6e9.chunk.js",
+    "main.js.map": "/MereHeadTestFull/static/js/main.b60cd6e9.chunk.js.map",
+    "runtime-main.js": "/MereHeadTestFull/static/js/runtime-main.35325973.js",
+    "runtime-main.js.map": "/MereHeadTestFull/static/js/runtime-main.35325973.js.map",
+    "static/js/2.26b0ea4f.chunk.js": "/MereHeadTestFull/static/js/2.26b0ea4f.chunk.js",
+    "static/js/2.26b0ea4f.chunk.js.map": "/MereHeadTestFull/static/js/2.26b0ea4f.chunk.js.map",
+    "index.html": "/MereHeadTestFull/index.html",
+    "precache-manifest.ec9dae89155982a36cd33f43ab2c200d.js": "/MereHeadTestFull/precache-manifest.ec9dae89155982a36cd33f43ab2c200d.js",
+    "service-worker.js": "/MereHeadTestFull/service-worker.js",
+    "static/js/2.26b0ea4f.chunk.js.LICENSE.txt": "/MereHeadTestFull/static/js/2.26b0ea4f.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.4cfc7d1f.js",
-    "static/js/2.5ed114d8.chunk.js",
+    "static/js/runtime-main.35325973.js",
+    "static/js/2.26b0ea4f.chunk.js",
     "static/js/main.b60cd6e9.chunk.js"
   ]
 }
