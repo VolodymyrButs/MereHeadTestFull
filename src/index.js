@@ -7,7 +7,8 @@ import App from './App'
 
 const GlobalStyle = createGlobalStyle`
   html,body {
-    margin:0
+    margin:0;
+    position: relative;
   }
   button{
       :hover{

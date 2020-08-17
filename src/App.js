@@ -6,27 +6,8 @@ import { CreateUser } from './CreateUser'
 import { EditUser } from './EditUser'
 import { getUsers } from './storage/actions'
 import { useSelector, useDispatch } from 'react-redux'
+import { Modal } from './Modal'
 
-const Wrapper = styled.div`
-    position: relative;
-    width: 100vw;
-    min-height: 100vh;
-`
-export const Modal = styled.div`
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(0, 0, 0, 0.85);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    span {
-        font-size: 32px;
-        color: #fff;
-    }
-`
 const UsersWrapper = styled.div`
     display: flex;
     justify-content: center;
@@ -40,7 +21,7 @@ const UserWrapper = styled.div`
     padding: 10px;
     button,
     p,
-    span {
+    > span {
         margin: 10px;
         padding: 5px 10px;
         border-radius: 10px;
@@ -50,30 +31,28 @@ const UserWrapper = styled.div`
 
 const App = () => {
     const dispatch = useDispatch()
-
     const [loading, setLoading] = useState(false)
 
     useEffect(() => {
-        getUsers(dispatch, setLoading)
-    }, [dispatch])
+        dispatch(getUsers(setLoading))
+    }, [])
 
     const usersData = useSelector((users) => users.users)
-
     const [currentPage, setCurrentPage] = useState(1)
     const usersPerPage = 5
 
-    const currentUsers =
-        usersData &&
-        usersData.slice(
-            (currentPage - 1) * usersPerPage,
-            currentPage * usersPerPage
-        )
-    const PageCount = usersData ? Math.ceil(usersData.length / usersPerPage) : 1
+    const currentUsers = usersData.slice(
+        (currentPage - 1) * usersPerPage,
+        currentPage * usersPerPage
+    )
+
+    const PageCount = Math.max(Math.ceil(usersData.length / usersPerPage), 1)
+
     if (PageCount < currentPage) {
         setCurrentPage(PageCount)
     }
     return (
-        <Wrapper>
+        <>
             {loading && (
                 <Modal>
                     <span>Loading...</span>
@@ -101,7 +80,7 @@ const App = () => {
                         )
                     })}
             </UsersWrapper>
-        </Wrapper>
+        </>
     )
 }
 

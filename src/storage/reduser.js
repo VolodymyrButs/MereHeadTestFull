@@ -1,6 +1,7 @@
 import throtle from 'lodash/throttle'
 import { loadState, saveState } from './localStorage'
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
+import ReduxThunk from 'redux-thunk'
 
 const initState = loadState()
 const users = (users = initState, action) => {
@@ -14,9 +15,10 @@ const users = (users = initState, action) => {
     }
 }
 
-export const store = createStore(users)
+export const store = createStore(users, applyMiddleware(ReduxThunk))
+
 store.subscribe(
     throtle(() => {
         saveState({ users: store.getState().users })
-    }, 1000)
+    }, 500)
 )

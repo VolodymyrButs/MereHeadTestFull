@@ -9,19 +9,22 @@ const handleError = (err) => {
     console.error(err)
 }
 
-export const getUsers = (dispatch, setLoading) => {
-    return fetch(
+export const getUsers = (setLoading) => (dispatch) => {
+    fetch(
         `https://cors-anywhere.herokuapp.com/http://77.120.241.80:8911/api/users`
     )
         .then(checkResponse)
-        .then((data) => {
-            dispatch({ type: 'add', data: data })
-        })
+        .then((data) =>
+            dispatch({
+                type: 'add',
+                data,
+            })
+        )
         .catch(handleError)
         .finally(setLoading(false))
 }
 
-export const deleteUser = (id, dispatch, setLoading) => {
+export const deleteUser = (id, setLoading) => (dispatch) => {
     setLoading(true)
     return fetch(
         `https://cors-anywhere.herokuapp.com/http://77.120.241.80:8911/api/user/${id}`,
@@ -34,16 +37,12 @@ export const deleteUser = (id, dispatch, setLoading) => {
     )
         .then(checkResponse)
         .then(() => {
-            getUsers(dispatch, setLoading)
+            dispatch(getUsers(setLoading))
         })
         .catch(handleError)
 }
-export const editUser = (
-    id,
-    userData,
-    setIsVisibleEditWindow,
-    dispatch,
-    setLoading
+export const editUser = (id, userData, setIsVisibleEditWindow, setLoading) => (
+    dispatch
 ) => {
     setIsVisibleEditWindow(false)
     setLoading(true)
@@ -59,11 +58,11 @@ export const editUser = (
     )
         .then(checkResponse)
         .then(() => {
-            getUsers(dispatch, setLoading)
+            dispatch(getUsers(setLoading))
         })
         .catch(handleError)
 }
-export const createUser = (data, dispatch, setLoading) => {
+export const createUser = (data, setLoading) => (dispatch) => {
     setLoading(true)
     return fetch(
         `https://cors-anywhere.herokuapp.com/http://77.120.241.80:8911/api/users`,
@@ -77,7 +76,7 @@ export const createUser = (data, dispatch, setLoading) => {
     )
         .then(checkResponse)
         .then(() => {
-            getUsers(dispatch, setLoading)
+            dispatch(getUsers(setLoading))
         })
         .catch(handleError)
 }

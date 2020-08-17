@@ -55,7 +55,7 @@ export const CreateUser = ({ setLoading }) => {
     const handleCreateUser = (e) => {
         e.preventDefault()
         clearInputs()
-        createUser(userData, dispatch, setLoading)
+        dispatch(createUser(userData, setLoading))
     }
 
     return (

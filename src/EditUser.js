@@ -1,9 +1,18 @@
 import React, { useState } from 'react'
+import styled from 'styled-components'
 import { useDispatch } from 'react-redux'
 
 import { deleteUser, editUser } from './storage/actions'
 import { FormStyled } from './CreateUser'
-import { Modal } from './App'
+import { Modal } from './Modal'
+
+const ModalStyled = styled(Modal)`
+    span {
+        font-size: 32px;
+        color: white;
+    }
+`
+
 export const EditUser = ({ user, setLoading }) => {
     const dispatch = useDispatch()
     const [editedUserName, setEditedUserName] = useState('')
@@ -20,28 +29,29 @@ export const EditUser = ({ user, setLoading }) => {
     const handleEditUserDescription = (e) => {
         setEditedUserDescription(e.currentTarget.value)
     }
+    const clearInputs = () => {
+        setEditedUserName('')
+        setEditedUserSurname('')
+        setEditedUserDescription('')
+    }
     const userData = {
         name: editedUserName,
         surname: editedUserSurname,
         desc: editedUserDescription,
     }
-    const handlerDeleteUser = () => deleteUser(user.id, dispatch, setLoading)
+    const handlerDeleteUser = () => dispatch(deleteUser(user.id, setLoading))
 
     const handlerEditUser = (e) => {
         e.preventDefault()
-        editUser(
-            user.id,
-            userData,
-            setIsVisibleEditWindow,
-            dispatch,
-            setLoading
+        dispatch(
+            editUser(user.id, userData, setIsVisibleEditWindow, setLoading)
         )
     }
 
     return (
         <>
             {confirmDelete && (
-                <Modal>
+                <ModalStyled>
                     <span>Delete?</span>
                     <button
                         onClick={() => {
@@ -58,7 +68,7 @@ export const EditUser = ({ user, setLoading }) => {
                     >
                         No
                     </button>
-                </Modal>
+                </ModalStyled>
             )}
             {!isVisibleEditWindow && (
                 <>
@@ -107,13 +117,16 @@ export const EditUser = ({ user, setLoading }) => {
                             required
                         />
                         <button type="submit">Edit user</button>
-                        {isVisibleEditWindow && (
-                            <button
-                                onClick={() => setIsVisibleEditWindow(false)}
-                            >
-                                Cancel edit
-                            </button>
-                        )}
+
+                        <button
+                            type="button"
+                            onClick={() => {
+                                clearInputs()
+                                setIsVisibleEditWindow(false)
+                            }}
+                        >
+                            Cancel edit
+                        </button>
                     </FormStyled>
                 </Modal>
             )}
