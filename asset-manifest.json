@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "/MereHeadTestFull/static/js/main.c00b09b6.chunk.js",
-    "main.js.map": "/MereHeadTestFull/static/js/main.c00b09b6.chunk.js.map",
+    "main.js": "/MereHeadTestFull/static/js/main.59cca3f7.chunk.js",
+    "main.js.map": "/MereHeadTestFull/static/js/main.59cca3f7.chunk.js.map",
     "runtime-main.js": "/MereHeadTestFull/static/js/runtime-main.35325973.js",
     "runtime-main.js.map": "/MereHeadTestFull/static/js/runtime-main.35325973.js.map",
-    "static/js/2.26b0ea4f.chunk.js": "/MereHeadTestFull/static/js/2.26b0ea4f.chunk.js",
-    "static/js/2.26b0ea4f.chunk.js.map": "/MereHeadTestFull/static/js/2.26b0ea4f.chunk.js.map",
+    "static/js/2.6850ba25.chunk.js": "/MereHeadTestFull/static/js/2.6850ba25.chunk.js",
+    "static/js/2.6850ba25.chunk.js.map": "/MereHeadTestFull/static/js/2.6850ba25.chunk.js.map",
     "index.html": "/MereHeadTestFull/index.html",
-    "precache-manifest.1dd2ccf467658f063c0c162b00c87063.js": "/MereHeadTestFull/precache-manifest.1dd2ccf467658f063c0c162b00c87063.js",
+    "precache-manifest.bd3397fce0a51360de02497091c563d6.js": "/MereHeadTestFull/precache-manifest.bd3397fce0a51360de02497091c563d6.js",
     "service-worker.js": "/MereHeadTestFull/service-worker.js",
-    "static/js/2.26b0ea4f.chunk.js.LICENSE.txt": "/MereHeadTestFull/static/js/2.26b0ea4f.chunk.js.LICENSE.txt"
+    "static/js/2.6850ba25.chunk.js.LICENSE.txt": "/MereHeadTestFull/static/js/2.6850ba25.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.35325973.js",
-    "static/js/2.26b0ea4f.chunk.js",
-    "static/js/main.c00b09b6.chunk.js"
+    "static/js/2.6850ba25.chunk.js",
+    "static/js/main.59cca3f7.chunk.js"
   ]
 }
