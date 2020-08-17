@@ -62,11 +62,13 @@ const App = () => {
     const [currentPage, setCurrentPage] = useState(1)
     const usersPerPage = 5
 
-    const currentUsers = usersData.slice(
-        (currentPage - 1) * usersPerPage,
-        currentPage * usersPerPage
-    )
-    const PageCount = Math.ceil(usersData.length / usersPerPage)
+    const currentUsers =
+        usersData &&
+        usersData.slice(
+            (currentPage - 1) * usersPerPage,
+            currentPage * usersPerPage
+        )
+    const PageCount = usersData ? Math.ceil(usersData.length / usersPerPage) : 1
     if (PageCount < currentPage) {
         setCurrentPage(PageCount)
     }
@@ -85,18 +87,19 @@ const App = () => {
                 PageCount={PageCount}
             />
             <UsersWrapper>
-                {currentUsers.map((user, index) => {
-                    return (
-                        <UserWrapper key={index}>
-                            <p>Name: {user.name}</p>
-                            <p>Surname: {user.surname}</p>
+                {currentUsers &&
+                    currentUsers.map((user, index) => {
+                        return (
+                            <UserWrapper key={index}>
+                                <p>Name: {user.name}</p>
+                                <p>Surname: {user.surname}</p>
 
-                            <p>Description: {user.desc}</p>
+                                <p>Description: {user.desc}</p>
 
-                            <EditUser setLoading={setLoading} user={user} />
-                        </UserWrapper>
-                    )
-                })}
+                                <EditUser setLoading={setLoading} user={user} />
+                            </UserWrapper>
+                        )
+                    })}
             </UsersWrapper>
         </Wrapper>
     )

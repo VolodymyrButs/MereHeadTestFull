@@ -1,17 +1,29 @@
+const checkResponse = (response) => {
+    if (!response.ok) {
+        throw new Error(`${response.status}: ${response.statusText}`)
+    }
+    return response.json()
+}
+
+const handleError = (err) => {
+    console.error(err)
+}
+
 export const getUsers = (dispatch, setLoading) => {
     return fetch(
         `https://cors-anywhere.herokuapp.com/http://77.120.241.80:8911/api/users`
     )
-        .then((response) => response.json())
+        .then(checkResponse)
         .then((data) => {
             dispatch({ type: 'add', data: data })
-            setLoading(false)
         })
+        .catch(handleError)
+        .finally(setLoading(false))
 }
 
 export const deleteUser = (id, dispatch, setLoading) => {
     setLoading(true)
-    fetch(
+    return fetch(
         `https://cors-anywhere.herokuapp.com/http://77.120.241.80:8911/api/user/${id}`,
         {
             method: 'DELETE',
@@ -19,9 +31,12 @@ export const deleteUser = (id, dispatch, setLoading) => {
                 'Content-Type': 'application/json',
             },
         }
-    ).then(() => {
-        getUsers(dispatch, setLoading)
-    })
+    )
+        .then(checkResponse)
+        .then(() => {
+            getUsers(dispatch, setLoading)
+        })
+        .catch(handleError)
 }
 export const editUser = (
     id,
@@ -32,7 +47,7 @@ export const editUser = (
 ) => {
     setIsVisibleEditWindow(false)
     setLoading(true)
-    fetch(
+    return fetch(
         `https://cors-anywhere.herokuapp.com/http://77.120.241.80:8911/api/user/${id}`,
         {
             method: 'PUT',
@@ -41,13 +56,16 @@ export const editUser = (
                 'Content-Type': 'application/json',
             },
         }
-    ).then(() => {
-        getUsers(dispatch, setLoading)
-    })
+    )
+        .then(checkResponse)
+        .then(() => {
+            getUsers(dispatch, setLoading)
+        })
+        .catch(handleError)
 }
 export const createUser = (data, dispatch, setLoading) => {
     setLoading(true)
-    fetch(
+    return fetch(
         `https://cors-anywhere.herokuapp.com/http://77.120.241.80:8911/api/users`,
         {
             method: 'POST',
@@ -56,7 +74,10 @@ export const createUser = (data, dispatch, setLoading) => {
                 'Content-Type': 'application/json',
             },
         }
-    ).then(() => {
-        getUsers(dispatch, setLoading)
-    })
+    )
+        .then(checkResponse)
+        .then(() => {
+            getUsers(dispatch, setLoading)
+        })
+        .catch(handleError)
 }
